@@ -3,6 +3,7 @@ const graphqlHTTP = require("express-graphql");
 const schema = require("./graphql/schema");
 const { setupDB } = require("../src/config/databaseConnection");
 const cors = require("cors");
+const path = require("path");
 
 var PORT = process.env.PORT || 4000;
 
@@ -26,6 +27,6 @@ app.use(
     app.get('*', (request, response) => {
         response.sendFile(path.join(__dirname, 'client/build', 'index.html'));
     });
-    
+
     app.listen(PORT);
 console.log("SERVER OKAY!");
