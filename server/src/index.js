@@ -22,11 +22,14 @@ app.use(
     );
     
     if (process.env.NODE_ENV === 'production') {
-        app.use(express.static('client/build'));
-    }
-    app.get('*', (request, response) => {
-        response.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-    });
+        const clientBuildPath = path.join(__dirname, '..','..', 'jury-box-frontend', 'build');
+        console.log(`Client build path: ${clientBuildPath}\n`);
+        app.use(express.static(clientBuildPath));
+      }
+      app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname, '../../jury-box-frontend/build/index.html'));
+      });
+      
 
     app.listen(PORT);
 console.log("SERVER OKAY!");
