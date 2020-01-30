@@ -4,6 +4,8 @@ const schema = require("./graphql/schema");
 const { setupDB } = require("../src/config/databaseConnection");
 const cors = require("cors");
 
+var PORT = process.env.PORT || 4000;
+
 const app = express();
 setupDB(v => console.log(v));
 
@@ -17,5 +19,5 @@ app.use(
     })
 );
 
-app.listen(4000);
+app.listen(PORT);
 console.log("SERVER OKAY!");
