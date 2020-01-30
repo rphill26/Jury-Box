@@ -27,7 +27,7 @@ app.use(
         app.use(express.static(clientBuildPath));
       }
       app.get('*', (req, res) => {
-        res.sendFile(path.join(__dirname, '../../jury-box-frontend/build/index.html'));
+        res.sendFile(path.join(__dirname, '..','..','jury-box-frontend','build','index.html'));
       });
       
 
