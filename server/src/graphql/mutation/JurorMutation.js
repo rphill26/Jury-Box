@@ -10,16 +10,19 @@ const {
 const CreateJurorMutation = {
     type: jurorType,
     args: {
-        content: { type: GraphQLString }
+        name: { type: GraphQLString },
+        rating: { type: GraphQLString },
+        political: { type: GraphQLString },
+        education: { type: GraphQLString },
+        employment: { type: GraphQLString }
     },
-    resolve: async (_, { content }) => {
+    resolve: async (_, { name, rating, political, education, employment }) => {
         const jurorService = new JurorService();
-        const newJuror = await jurorService.createJuror({ content });
+        const newJuror = await jurorService.createJuror({ name, rating, political, education, employment });
 
         return newJuror;
     }
 };
-
 
 const DeleteJurorMutation = {
     type: GraphQLID,
@@ -40,11 +43,15 @@ const UpdateJurorMutation = {
     type: jurorType,
     args: { 
         _id: { type: GraphQLID },
-        content: { type: GraphQLString }
+        name: { type: GraphQLString },
+        rating: { type: GraphQLString },
+        political: { type: GraphQLString },
+        education: { type: GraphQLString },
+        employment: { type: GraphQLString }
      },
-     resolve: async (_, { _id, content }) => {
+     resolve: async (_, { _id, name, rating, political, education, employment }) => {
          const jurorService = new JurorService();
-         const updatedJuror = await noteService.updateJuror(_id, { content });
+         const updatedJuror = await jurorService.updateJuror(_id, { name, rating, political, education, employment });
 
          return updatedJuror;
      }
