@@ -24,19 +24,13 @@ app.use(
 app.use(passport.initialize());
 
 if (process.env.NODE_ENV === "production") {
-  const clientBuildPath = path.join(
-    __dirname,
-    "..",
-    "..",
-    "jury-box-frontend",
-    "build"
-  );
+  const clientBuildPath = path.join(__dirname, "..", "..", "frontend", "build");
   console.log(`Client build path: ${clientBuildPath}\n`);
   app.use(express.static(clientBuildPath));
 }
 app.get("*", (req, res) => {
   res.sendFile(
-    path.join(__dirname, "..", "..", "jury-box-frontend", "build", "index.html")
+    path.join(__dirname, "..", "..", "frontend", "build", "index.html")
   );
 });
 
