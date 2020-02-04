@@ -1,0 +1,64 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.navbar {
+  padding-left: 2.5em;
+  background-color: blue;
+  color: black;
+  height: 10em;
+  font-size: 1.5em;
+  justify-content: end;
+  display: flex;
+}
+
+#brand-name {
+  font-size: 2em;
+}
+
+.juryPoolTitle {
+  margin-left: 2em;
+  font-size: 2em;
+}
+
+.jurorItems {
+  background: lavender;
+  color: crimson;
+  width: fit-content;
+  font-size: larger;
+  margin-left: 2em;
+}
+
+.jurorCreation {
+  margin-left: 2em;
+  width: auto;
+}
+.form-control {
+  width: fit-content;
+}
+
+.inputField {
+  width: 20px;
+  color: blue;
+}
+
+.mainFooter {
+  text-align: center;
+  font-size: 1.5em;
+  margin-top: 1.5em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  color: white;
+  background: black;
+  position: sticky;
+}

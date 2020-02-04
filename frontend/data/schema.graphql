@@ -1,0 +1,18 @@
+type Mutation {
+  createJuror(name: String, rating: String, political: String, education: String, employment: String): Juror
+  deleteJuror(_id: ID): ID
+  updateJuror(_id: ID, name: String, rating: String, political: String, education: String, employment: String): Juror 
+}
+
+type Juror {
+  _id: ID
+  name: String
+  rating: String
+  political: String
+  education: String
+  employment: String
+}
+
+type Query {
+  jurors: [Juror]
+}
