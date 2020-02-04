@@ -16,11 +16,17 @@ With The Jury Box, an attorney can record various pieces of information about ev
 
 You must have two terminals open to run the app locally. One must be in the Jury-Box/jury-box-frontend directory, while the 2nd must be in the Jury-Box/server/src folder.
 
-In the jury-box-frontend terminal, use 'yarn run relay' to load in the schema from graphql to the frontend.
+In the jury-box-frontend terminal, use
+yarn run relay  
+to load in the schema from graphql to the frontend.
 
-Next, still in the jury-box-frontend terminal, use 'yarn run start' to have the app open on port 3000. This will load in the React App and front end UI.
+Next, still in the jury-box-frontend terminal, use
+yarn run start  
+ to have the app open on port 3000. This will load in the React App and front end UI.
 
-Then, in your second terminal, use 'node index.js' to start up your server. This is connected to an Atlas Cloud Cluster and will read 'DB OK' at the bottom of the terminal.
+Then, in your second terminal, use node index.js to start up your server. This is connected to an Atlas Cloud Cluster and will read
+DB OK  
+ at the bottom of the terminal.
 
 ## Technologies Used
 
