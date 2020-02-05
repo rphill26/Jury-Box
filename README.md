@@ -14,9 +14,9 @@ With The Jury Box, an attorney can record various pieces of information about ev
 
 ## Getting Started
 
-You must have two terminals open to run the app locally. One must be in the Jury-Box/jury-box-frontend directory, while the 2nd must be in the Jury-Box/server/src folder.
+You must have two terminals open to run the app locally. One must be in the Jury-Box/frontend directory, while the 2nd must be in the Jury-Box/server/src folder.
 
-In the jury-box-frontend terminal, use
+In the frontend terminal, use
 yarn run relay  
 to load in the schema from graphql to the frontend.
 

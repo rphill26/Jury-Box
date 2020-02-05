@@ -3,6 +3,9 @@ import createJurorMutation from "../MainPage/mutations/createJuror";
 import deleteJurorMutation from "../MainPage/mutations/deleteJuror";
 import updateJurorMutation from "../MainPage/mutations/updateJuror";
 
+// const getAllJurorsQuery = jurors =>
+//   `{ Juror(filter: { q:"${jurors}" }) { _id name } }`;
+
 const MapJurors = ({ jurors }) => {
   const [
     newJurorName,

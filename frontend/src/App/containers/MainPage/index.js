@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import "../../../../src/styles.css";
 import JuryBox from "../JuryBox/jurybox";
 import Footer from "../Footer/footer";
-// import MapJurors from "../MapJurors/MapJurors";
+import MapJurors from "../MapJurors/MapJurors";
 import createJurorMutation from "../MainPage/mutations/createJuror";
+import updateJurorMutation from "../MainPage/mutations/updateJuror";
+import deleteJurorMutation from "../MainPage/mutations/deleteJuror";
 
-const MainPage = () => {
+const MainPage = props => {
   const [
     newJurorName,
     setNewJurorName,
@@ -32,6 +34,8 @@ const MainPage = () => {
   ] = useState("");
   const [jurorIdBeingUpdated, setJurorIdBeingUpdated] = useState("");
 
+  console.log(props);
+
   return (
     // Main Container
     <div class="container-fluid">
@@ -42,7 +46,46 @@ const MainPage = () => {
         {/* Jury Box Table */}
         <div class="col-11">
           <JuryBox></JuryBox>
-          <ul>{/* <MapJurors /> */}</ul>
+          <ul>
+            {props.jurors.map(v => {
+              const isBeingUpdated = jurorIdBeingUpdated === v._id;
+
+              return (
+                <div className="jurorItems">
+                  {isBeingUpdated ? (
+                    <li>
+                      <input
+                        autoFocus
+                        value={jurorNameBeingUpdated}
+                        onChange={e => setJurorNameBeingUpdated(e.target.value)}
+                      />
+                    </li>
+                  ) : (
+                    <li>{v.name}</li>
+                  )}
+                  <div style={{ display: "flex" }}>
+                    <button
+                      onClick={() => {
+                        if (isBeingUpdated) {
+                          updateJurorMutation(v._id, jurorNameBeingUpdated);
+                          setJurorIdBeingUpdated("");
+                          setJurorNameBeingUpdated("");
+                        } else {
+                          setJurorIdBeingUpdated(v._id);
+                          setJurorNameBeingUpdated(v.name);
+                        }
+                      }}
+                    >
+                      update
+                    </button>
+                    <button onClick={() => deleteJurorMutation(v._id)}>
+                      delete
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
+          </ul>
         </div>
       </div>
 

@@ -1,8 +1,8 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 
-import { graphql, QueryRenderer } from "react-relay";
 import MainPage from "./containers/MainPage";
+import { graphql, QueryRenderer } from "react-relay";
 import API from "../lib/API";
 import TokenStore from "../lib/TokenStore";
 import AuthContext from "../contexts/AuthContext";
@@ -12,6 +12,7 @@ import Login from "./containers/Login/Login";
 import Register from "./containers/Register/Register";
 import Secret from "./containers/Secret/Secret";
 import NotFound from "./containers/NotFound/NotFound";
+import MapJurors from "./containers/MapJurors/MapJurors";
 
 import environment from "../environment";
 
@@ -60,34 +61,40 @@ export default class App extends React.Component {
       <AuthContext.Provider value={this.state.auth}>
         <div className="App">
           <Navbar />
-          <QueryRenderer
-            environment={environment}
-            query={graphql`
-              query AppQuery {
-                jurors {
-                  _id
-                  name
-                  rating
-                  political
-                  education
-                  employment
-                }
-              }
-            `}
-            variables={{}}
-            render={({ error, props }) => {
-              if (error) {
-                return <div>Error!</div>;
-              }
-              if (!props) {
-                return <div>Loading...</div>;
-              }
-              // return <MainPage {...props} />;
-            }}
-          />
           <div className="container">
             <Switch>
-              <Route exact path="/" component={MainPage} />
+              {/* <Route exact path="/" component={MainPage} /> */}
+              <Route
+                exact
+                path="/"
+                render={props => (
+                  <QueryRenderer
+                    environment={environment}
+                    query={graphql`
+                      query AppQuery {
+                        jurors {
+                          _id
+                          name
+                          rating
+                          political
+                          education
+                          employment
+                        }
+                      }
+                    `}
+                    variables={{}}
+                    render={({ error, props }) => {
+                      if (error) {
+                        return <div>Error!</div>;
+                      }
+                      if (!props) {
+                        return <div>Loading...</div>;
+                      }
+                      return <MainPage {...props} />;
+                    }}
+                  />
+                )}
+              />
               <Route path="/login" component={Login} />
               <Route path="/register" component={Register} />
               <PrivateRoute path="/secret" component={Secret} />
